@@ -1,2 +1,10 @@
 # comet-react
-A reddit client written in React with TypeScript
+A reddit client written in React with TypeScript.
+
+## Used Technologies
+
+* React
+* TypeScript
+* Redux
+* Mocha
+* Chai
