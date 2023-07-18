@@ -1,11 +1,10 @@
 import './App.css';
+import CometHeader from './components/CometHeader';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Header Placeholder
-      </header>
+      <CometHeader />
     </div>
   );
 }
