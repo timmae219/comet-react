@@ -6,5 +6,4 @@ A reddit client written in React with TypeScript.
 * React
 * TypeScript
 * Redux
-* Mocha
-* Chai
+* Jest
