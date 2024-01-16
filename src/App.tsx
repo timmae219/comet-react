@@ -1,12 +1,13 @@
 import React, { ReactElement } from 'react';
 import './App.css';
-import CometHeader from './components/CometHeader';
+import CometHeader from './components/header/CometHeader/CometHeader';
+import CometBody from './components/body/CometBody';
 
 function App(): ReactElement {
-  // TODO: write test for header (App Component and Header Component)
   return (
     <div className="App">
       <CometHeader />
+      <CometBody />
     </div>
   );
 }
