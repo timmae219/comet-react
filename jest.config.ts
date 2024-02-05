@@ -9,6 +9,15 @@ module.exports = {
     "^.+\\.tsx?$": "ts-jest"
   },
 
+  collectCoverage: true,
+
+  collectCoverageFrom: [
+    '**/src/App.tsx',
+    '**/src/components/**/*.{ts,tsx}',
+    '!**/node_modules/**',
+    '!**/vendor/**',
+  ],
+
   // Runs special logic, such as cleaning up components
   // when using React Testing Library and adds special
   // extended assertions to Jest
