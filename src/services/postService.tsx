@@ -9,12 +9,9 @@ export default class PostService {
         const rawPostsArray: Array<any> = responseObject['data']['children'];
 
         const popularPosts = rawPostsArray.map((rawPost) => {
-            // TODO: extract values from JSON and pass to constructor
-            return '';
+            return Post.fromJson(rawPost);
         });
 
-
-
-        return [];
+        return popularPosts;
     }
 }

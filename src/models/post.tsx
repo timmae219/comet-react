@@ -1,9 +1,10 @@
+import { title } from "process";
 import Comment from "./comment";
 
 export default class Post {
     title: string;
     authorUserName: string;
-    authorProfilePictureUri: string;
+    subreddit: string;
     text: string;
     previewMediaUri: string;
     votingScore: number;
@@ -20,10 +21,23 @@ export default class Post {
         ) {
         this.title = title;
         this.authorUserName = authorUserName;
-        this.authorProfilePictureUri = authorProfilePictureUri;
+        this.subreddit = authorProfilePictureUri;
         this.text = text;
         this.previewMediaUri = previewMediaUri;
         this.votingScore = votingScore;
         this.comments = comments;
+    }
+
+    static fromJson(json: any): Post {
+        // TODO: parse comments
+        return new Post(
+            json['data']['title'],
+            json['data']['author'],
+            json['data']['subreddit_name_prefixed'],
+            json['data']['selftext_html'],
+            json['data']['preview']['images'][0]['source']['url'],
+            json['data']['ups'],
+            []
+        );
     }
 }
