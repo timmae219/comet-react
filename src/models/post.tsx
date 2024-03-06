@@ -1,4 +1,3 @@
-import { title } from "process";
 import Comment from "./comment";
 
 export default class Post {
@@ -35,7 +34,7 @@ export default class Post {
             json['data']['author'],
             json['data']['subreddit_name_prefixed'],
             json['data']['selftext_html'],
-            json['data']['preview']['images'][0]['source']['url'],
+            json['data']['preview']['images'][0]['source']['url'], // TODO: make nullable
             json['data']['ups'],
             []
         );
