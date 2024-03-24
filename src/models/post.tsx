@@ -5,7 +5,7 @@ export default class Post {
     authorUserName: string;
     subreddit: string;
     text: string;
-    previewMediaUri: string;
+    previewMediaUri: string | null;
     votingScore: number;
     comments: Array<Comment>;
 
@@ -14,7 +14,7 @@ export default class Post {
         authorUserName: string,
         authorProfilePictureUri: string,
         text: string,
-        previewMediaUri: string,
+        previewMediaUri: string | null,
         votingScore: number,
         comments: Array<Comment>
         ) {
@@ -29,12 +29,13 @@ export default class Post {
 
     static fromJson(json: any): Post {
         // TODO: parse comments
+        console.log(json);
         return new Post(
             json['data']['title'],
             json['data']['author'],
             json['data']['subreddit_name_prefixed'],
             json['data']['selftext_html'],
-            json['data']['preview']['images'][0]['source']['url'], // TODO: make nullable
+            json['data']['preview'] ? json['data']['preview']['images'][0]['source']['url'] : null,
             json['data']['ups'],
             []
         );

@@ -8,7 +8,7 @@ const initialState = {
 
 const postService = new PostService();
 
-export default async function(state = initialState, action: Action){
+export async function postsReducer(state = initialState, action: Action){
     switch(action.type){
         case GET_POPULAR_POSTS: {
             const popular_posts = await postService.getPopularPosts();
