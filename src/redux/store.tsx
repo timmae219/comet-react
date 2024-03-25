@@ -1,16 +1,12 @@
-import { configureStore, Action } from '@reduxjs/toolkit';
+import { configureStore} from '@reduxjs/toolkit';
 import rootReducer from './rootReducer';
-import { ThunkAction } from 'redux-thunk'
-import { GET_POPULAR_POSTS } from './actionTypes';
+import { fetchPosts } from './reducers/posts';
 
-export const store =  configureStore({
+export const store = configureStore({
   reducer: rootReducer
 })
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
-export type AppThunk = ThunkAction<void, RootState, null, Action<string>>
-
-store.dispatch({type: GET_POPULAR_POSTS});
+// TODO: dispatch action/thunk correctly
+store.dispatch(fetchPosts);
 
 export default store;
