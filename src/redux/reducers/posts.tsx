@@ -1,38 +1,50 @@
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import PostService from "../../services/postService";
 import Post from "../../models/post";
-import { asyncThunkCreator, buildCreateSlice } from "@reduxjs/toolkit";
-// import { createAppSlice } from "../store";
-
-const postService = new PostService();
 
 interface PostsState {
     posts: Post[];
+    status: 'idle' | 'loading' | 'succeeded' | 'failed';
+    error: string | null;
 }
 
+const postService = new PostService();
 
-// TODO: move to a global file for better structure
-export const createAppSlice = buildCreateSlice({
-    creators: { asyncThunk: asyncThunkCreator },
-});
+// TODO: fix non-serializable error
+export const fetchPosts = createAsyncThunk<Post[], void>(
+    'posts/fetchPosts',
+    async () => {
+        try {
+            const popularPosts: Post[] = await postService.getPopularPosts();
+            return popularPosts;
+        } catch (error) {
+            throw error;
+        }
+    }
+);
 
-const postsSlice = createAppSlice({
+const postsSlice = createSlice({
     name: 'posts',
     initialState: {
-        posts: []
-    } satisfies PostsState as PostsState,
-    reducers: (create) => ({
-        fetchPosts: create.asyncThunk(async () => {
-            const popular_posts: Post[] = await postService.getPopularPosts();
-            console.log(popular_posts);
-            return popular_posts;
-        },
-            {
-                fulfilled: (state, action) => {
-                    state = { posts: action.payload };
-                }
-            }
-        )
-    })
+        posts: [],
+        status: 'idle',
+        error: null
+    } as PostsState,
+    reducers: {},
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchPosts.pending, (state) => {
+                state.status = 'loading';
+            })
+            .addCase(fetchPosts.fulfilled, (state, action: PayloadAction<Post[]>) => {
+                state.status = 'succeeded';
+                state.posts = action.payload;
+            })
+            .addCase(fetchPosts.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message || null;
+            });
+    }
 });
 
-export const { fetchPosts } = postsSlice.actions;
+export default postsSlice.reducer;

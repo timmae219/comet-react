@@ -1,4 +1,3 @@
-import { JsonObjectExpression } from "typescript";
 import Post from "../models/post";
 
 export default class PostService {
