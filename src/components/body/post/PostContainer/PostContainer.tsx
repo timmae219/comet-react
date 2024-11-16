@@ -1,24 +1,20 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import './PostContainer.css';
 
 export default function PostContainer(): JSX.Element {
+  const [isLoading, setIsLoading] = useState(true);
 
-    const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
 
-    if (isLoading) {
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 5000); // only for "mocking" loading since real loading is not implemented yet
-    }
+    return () => clearTimeout(timer); // Clean up timer on unmount
+  }, []); // Empty dependency array ensures this effect runs only once
 
-    // TODO: divide post more fine-grained and apply loading animation to every child component
-        // Post-heading
-        // Post-image
-        // Post-text
-        
-    return (
-    <div className={isLoading ? "Post-container-loading" : "Post-container"}>
-        {isLoading ? "" : "Post Container Placeholder"}
-    </div>);
+  return (
+    <div role="main" className={isLoading ? "Post-container-loading" : "Post-container"}>
+      {isLoading ? "" : "Post Container Placeholder"}
+    </div>
+  );
 }
