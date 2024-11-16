@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, act } from "@testing-library/react";
-import PostContainer from '../../../../../components/body/post/PostContainer/PostContainer';
+import PostContainer from '../PostContainer';
 import '@testing-library/jest-dom';
 
 describe('PostContainer Component Tests', () => {
