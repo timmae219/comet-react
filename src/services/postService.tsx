@@ -11,8 +11,6 @@ export default class PostService {
             return Post.fromJson(rawPost);
         });
 
-        console.log(`Popular posts: ${JSON.stringify(popularPosts)}`);
-
         return popularPosts;
     }
 }
