@@ -29,7 +29,7 @@ export default class Post {
 
     static fromJson(json: any): Post {
         // TODO: parse comments
-        console.log(json);
+        console.log(`POST fromJSON: ${JSON.stringify(json)}`);
         return new Post(
             json['data']['title'],
             json['data']['author'],

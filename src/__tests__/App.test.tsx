@@ -60,6 +60,6 @@ describe('Root App Component Tests', () => {
       </Provider>
     );
 
-    expect(store.getState().posts).toHaveLength(1);  // TODO: Debug correct prop names
+    expect(store.getState().posts).toHaveLength(3);
   });
 });
