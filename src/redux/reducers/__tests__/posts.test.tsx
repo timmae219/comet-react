@@ -39,4 +39,11 @@ describe("Posts Reducer", () => {
     expect(state.status).toBe('failed');
     expect(state.error).toBe('Error fetching posts');
   });
+
+  it("should set status to 'failed' and set error message to null when fetchPosts is rejected and no error message is specified", () => {
+    const action = { type: fetchPosts.rejected.type, error: { message: null } };
+    const state = postsReducer({ posts: [], status: 'loading', error: null }, action);
+    expect(state.status).toBe('failed');
+    expect(state.error).toBe(null);
+  });
 });
