@@ -1,17 +1,17 @@
-import React, { ReactElement, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import CometHeader from './components/header/CometHeader/CometHeader';
 import CometBody from './components/body/CometBody';
-import { useDispatch } from 'react-redux';
-import { fetchPosts } from './redux/reducers/posts';
+import { useGetPopularPostsQuery } from './api/postsApi';
 
 
-function App(): ReactElement {
-  const dispatch = useDispatch<any>();
+function App(): JSX.Element {
+
+  const { data: popularPostsData, error, isLoading } = useGetPopularPostsQuery({});
 
   useEffect(() => {
-    dispatch(fetchPosts()); 
-  }, [dispatch]);
+    console.log(popularPostsData, error, isLoading);
+  }, [popularPostsData, error, isLoading]);
   
   return (
     <div className="App">
