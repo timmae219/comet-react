@@ -13,7 +13,7 @@ describe("Post Model", () => {
       "This is the post text",
       "https://example.com/image.jpg",
       123,
-      comments
+      comments,
     );
 
     expect(post.title).toBe("Test Title");

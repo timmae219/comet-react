@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './PostContainer.css';
+import "./PostContainer.css";
 
 export default function PostContainer(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,10 @@ export default function PostContainer(): JSX.Element {
   }, []); // Empty dependency array ensures this effect runs only once
 
   return (
-    <div role="main" className={isLoading ? "Post-container-loading" : "Post-container"}>
+    <div
+      role="main"
+      className={isLoading ? "Post-container-loading" : "Post-container"}
+    >
       {isLoading ? "" : "Post Container Placeholder"}
     </div>
   );

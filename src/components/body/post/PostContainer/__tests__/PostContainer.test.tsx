@@ -1,10 +1,9 @@
-import React from 'react';
+import React from "react";
 import { render, screen, act } from "@testing-library/react";
-import PostContainer from '../PostContainer';
-import '@testing-library/jest-dom';
+import PostContainer from "../PostContainer";
+import "@testing-library/jest-dom";
 
-describe('PostContainer Component Tests', () => {
-
+describe("PostContainer Component Tests", () => {
   beforeEach(() => {
     jest.useFakeTimers();
   });
@@ -14,17 +13,17 @@ describe('PostContainer Component Tests', () => {
     jest.useRealTimers();
   });
 
-  it('displays loading state initially', () => {
+  it("displays loading state initially", () => {
     act(() => {
       render(<PostContainer />);
     });
 
-    const containerElement = screen.getByRole('main', { hidden: true });
+    const containerElement = screen.getByRole("main", { hidden: true });
     expect(containerElement).toHaveClass("Post-container-loading");
     expect(containerElement).toBeEmptyDOMElement();
   });
 
-  it('displays content after loading time elapses', () => {
+  it("displays content after loading time elapses", () => {
     act(() => {
       render(<PostContainer />);
     });
@@ -33,12 +32,8 @@ describe('PostContainer Component Tests', () => {
       jest.advanceTimersByTime(5000);
     });
 
-    const containerElement = screen.getByRole('main', { hidden: true });
+    const containerElement = screen.getByRole("main", { hidden: true });
     expect(containerElement).toHaveTextContent("Post Container Placeholder");
     expect(containerElement).toHaveClass("Post-container");
   });
 });
-
-
-
-

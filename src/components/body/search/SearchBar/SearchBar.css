@@ -1,12 +1,12 @@
 .Search-bar {
-    width: 66%;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 40px;
-    border-radius: 15px;
-    border: 1px solid lightgray;
-    padding-top: 15px;
-    padding-left: 10px;
+  width: 66%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 40px;
+  border-radius: 15px;
+  border: 1px solid lightgray;
+  padding-top: 15px;
+  padding-left: 10px;
 }

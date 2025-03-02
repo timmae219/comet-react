@@ -5,10 +5,12 @@ describe("Comment Model", () => {
     const comment = new Comment(
       "https://example.com/profile.jpg",
       "testUser",
-      "This is a comment"
+      "This is a comment",
     );
 
-    expect(comment.userProfilePictureUri).toBe("https://example.com/profile.jpg");
+    expect(comment.userProfilePictureUri).toBe(
+      "https://example.com/profile.jpg",
+    );
     expect(comment.userName).toBe("testUser");
     expect(comment.commentText).toBe("This is a comment");
   });

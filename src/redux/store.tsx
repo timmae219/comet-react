@@ -1,15 +1,19 @@
-import { configureStore } from '@reduxjs/toolkit';
-import rootReducer from './rootReducer';
+import { configureStore } from "@reduxjs/toolkit";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import { postsApi } from "./../api/postsApi";
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    [postsApi.reducerPath]: postsApi.reducer,
+  },
   middleware(getDefaultMiddleware) {
-    // Disable serializableCheck when using Redux Toolkit / After Refactoring (Redux Docs and RTK Query)
     return getDefaultMiddleware({
       serializableCheck: false,
-    });
+    }).concat(postsApi.middleware);
   },
 });
+
+setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
