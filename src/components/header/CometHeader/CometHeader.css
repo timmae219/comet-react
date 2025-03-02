@@ -1,13 +1,13 @@
 .Comet-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background-color: rgb(80, 80, 80);
-    position: sticky;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgb(80, 80, 80);
+  position: sticky;
 }
 
 #comet-header-logo {
-    padding-top: 5px;
-    padding-bottom: 5px;
-    height: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 50px;
 }
