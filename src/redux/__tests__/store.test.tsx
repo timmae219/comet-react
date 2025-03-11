@@ -7,14 +7,8 @@ describe("Store Configuration", () => {
   });
 
   it("should have RootState and AppDispatch types", () => {
-    type StateType = ReturnType<typeof store.getState>;
-    type DispatchType = typeof store.dispatch;
-
-    let testRootState: RootState;
-    let testAppDispatch: AppDispatch;
-
-    testRootState = store.getState();
-    testAppDispatch = store.dispatch;
+    const testRootState: RootState = store.getState();
+    const testAppDispatch: AppDispatch = store.dispatch;
 
     expect(testRootState.posts).toBeDefined();
     expect(typeof testAppDispatch).toBe("function");

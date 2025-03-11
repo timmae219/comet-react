@@ -24,7 +24,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "test:watch": "jest --watch",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "full-check": "jest && npx prettier . -c && npx eslint ./src"
   },
   "eslintConfig": {
     "extends": [
