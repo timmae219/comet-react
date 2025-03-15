@@ -2,11 +2,18 @@ import React from "react";
 
 import "./PostList.css";
 import PostContainer from "../PostContainer/PostContainer";
+import Post from "../../../../models/post";
 
-export default function PostList(): JSX.Element {
+interface PostListProps {
+  posts: Post[];
+}
+
+export default function PostList(props: PostListProps): JSX.Element {
   return (
-    <div className="Post-list">
-      <PostContainer />
-    </div>
+    <>
+      {props.posts.map((post: Post) => (
+        <PostContainer post={post} />
+      ))}
+    </>
   );
 }

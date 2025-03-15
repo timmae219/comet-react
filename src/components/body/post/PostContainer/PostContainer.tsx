@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./PostContainer.css";
+import PostHeader from "./PostHeader/PostHeader";
+import PostBody from "./PostBody/PostBody";
+import Post from "../../../../models/post";
 
-export default function PostContainer(): JSX.Element {
+interface PostContainerProps {
+  post: Post;
+}
+
+export default function PostContainer(props: PostContainerProps): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -9,15 +16,21 @@ export default function PostContainer(): JSX.Element {
       setIsLoading(false);
     }, 5000);
 
-    return () => clearTimeout(timer); // Clean up timer on unmount
-  }, []); // Empty dependency array ensures this effect runs only once
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div
       role="main"
       className={isLoading ? "Post-container-loading" : "Post-container"}
     >
-      {isLoading ? "" : "Post Container Placeholder"}
+      {isLoading && <div className="Post-loading">Loading...</div>}
+      {!isLoading && (
+        <>
+          <PostHeader title={props.post.title} />
+          <PostBody />
+        </>
+      )}
     </div>
   );
 }
