@@ -12,7 +12,7 @@ export default function PostList(props: PostListProps): JSX.Element {
   return (
     <>
       {props.posts.map((post: Post) => (
-        <PostContainer post={post} />
+        <PostContainer key={post.title} post={post} />
       ))}
     </>
   );

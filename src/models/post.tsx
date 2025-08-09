@@ -27,14 +27,7 @@ export default class Post {
     this.comments = comments;
   }
 
-  static fromJson(json: {
-    title: string;
-    author: string;
-    subreddit_name_prefixed: string;
-    selftext_html: string;
-    preview?: { images: { source: { url: string } }[] };
-    ups: number;
-  }): Post {
+  static fromJson(json: PostJson): Post {
     // TODO: parse comments
     return new Post(
       json.title ? json.title : "No title",
@@ -46,4 +39,13 @@ export default class Post {
       [],
     );
   }
+}
+
+export interface PostJson {
+  title: string;
+  author: string;
+  subreddit_name_prefixed: string;
+  selftext_html: string;
+  preview?: { images: { source: { url: string } }[] };
+  ups: number;
 }
