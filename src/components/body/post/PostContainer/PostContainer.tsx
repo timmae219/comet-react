@@ -21,8 +21,10 @@ export default function PostContainer(props: PostContainerProps): JSX.Element {
 
   return (
     <div
-      role="main"
       className={isLoading ? "Post-container-loading" : "Post-container"}
+      data-testid={`post-container-${props.post.title}`}
+      role="main"
+      aria-label="Post Container"
     >
       {isLoading && <div className="Post-loading">Loading...</div>}
       {!isLoading && (
