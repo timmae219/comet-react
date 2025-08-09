@@ -13,19 +13,28 @@ describe("PostContainer Component Tests", () => {
     jest.useRealTimers();
   });
 
+  const dummyPost = {
+    title: "Test Post",
+    authorUserName: "testUser",
+    subreddit: "r/testSubreddit",
+    text: "This is a test post",
+    previewMediaUri: "https://example.com/image.jpg",
+    votingScore: 42,
+    comments: [],
+  };
+
   it("displays loading state initially", () => {
     act(() => {
-      render(<PostContainer />);
+      render(<PostContainer post={dummyPost}/>);
     });
 
     const containerElement = screen.getByRole("main", { hidden: true });
     expect(containerElement).toHaveClass("Post-container-loading");
-    expect(containerElement).toBeEmptyDOMElement();
   });
 
   it("displays content after loading time elapses", () => {
     act(() => {
-      render(<PostContainer />);
+      render(<PostContainer post={dummyPost}/>);
     });
 
     act(() => {
@@ -33,7 +42,7 @@ describe("PostContainer Component Tests", () => {
     });
 
     const containerElement = screen.getByRole("main", { hidden: true });
-    expect(containerElement).toHaveTextContent("Post Container Placeholder");
+    expect(containerElement).toHaveTextContent("Test Post");
     expect(containerElement).toHaveClass("Post-container");
   });
 });

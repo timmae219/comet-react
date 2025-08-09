@@ -40,7 +40,7 @@ describe("Post Model", () => {
         },
       };
 
-      const post = Post.fromJson(jsonData);
+      const post = Post.fromJson(jsonData.data);
 
       expect(post.title).toBe("Sample Post Title");
       expect(post.authorUserName).toBe("sampleUser");
@@ -62,13 +62,13 @@ describe("Post Model", () => {
         },
       };
 
-      const post = Post.fromJson(jsonData);
+      const post = Post.fromJson(jsonData.data);
 
       expect(post.title).toBe("Title without Image");
       expect(post.authorUserName).toBe("userWithoutImage");
       expect(post.subreddit).toBe("r/noImageSubreddit");
       expect(post.text).toBe("<p>No image content</p>");
-      expect(post.previewMediaUri).toBeNull(); // Ensure null if no image exists
+      expect(post.previewMediaUri).toBeNull();
       expect(post.votingScore).toBe(15);
       expect(post.comments).toEqual([]);
     });
