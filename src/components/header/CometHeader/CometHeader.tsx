@@ -6,7 +6,7 @@ export default function CometHeader(): JSX.Element {
   return (
     <header className="Comet-header" data-testid="comet-header">
       <div>
-        <img id="comet-header-logo" src={cometLogo} alt="Comet App logo"></img>
+        <img id="comet-header-logo" src={cometLogo} alt="Comet App logo"/>
       </div>
     </header>
   );
