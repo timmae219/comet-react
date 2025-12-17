@@ -1,0 +1,11 @@
+.Post-body {
+  width: 100%;
+  height: 200px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
