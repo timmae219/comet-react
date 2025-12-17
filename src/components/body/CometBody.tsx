@@ -8,7 +8,7 @@ import Post, {PostJson} from "../../models/post";
 export default function CometBody(): JSX.Element {
   const { data, isLoading } = useGetPopularPostsQuery({});
   const posts = data?.data.children.map((data: {data: PostJson}) => {
-    return Post.fromJson(data.data);  // TODO: Write unit tests that cover this line
+    return Post.fromJson(data.data);
   });
 
   return (

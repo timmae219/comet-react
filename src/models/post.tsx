@@ -42,7 +42,7 @@ export default class Post {
 }
 
 export interface PostJson {
-  title: string;
+  title?: string;
   author: string;
   subreddit_name_prefixed: string;
   selftext_html: string;
