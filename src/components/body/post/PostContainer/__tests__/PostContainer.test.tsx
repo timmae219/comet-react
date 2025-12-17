@@ -24,18 +24,14 @@ describe("PostContainer Component Tests", () => {
   };
 
   it("displays loading state initially", () => {
-    act(() => {
-      render(<PostContainer post={dummyPost}/>);
-    });
+    render(<PostContainer post={dummyPost} />);
 
     const containerElement = screen.getByRole("main", { hidden: true });
     expect(containerElement).toHaveClass("Post-container-loading");
   });
 
   it("displays content after loading time elapses", () => {
-    act(() => {
-      render(<PostContainer post={dummyPost}/>);
-    });
+    render(<PostContainer post={dummyPost} />);
 
     act(() => {
       jest.advanceTimersByTime(5000);
