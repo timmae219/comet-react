@@ -32,7 +32,7 @@ export default function PostContainer(props: PostContainerProps): JSX.Element {
         <>
           <PostHeader title={props.post.title} />
           {props.post.previewMediaUri && <PostImage url={props.post.previewMediaUri} />}
-          <PostBody />
+          <PostBody content={props.post.text} />
         </>
       )}
     </div>
