@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, JSX } from "react";
 import "./PostContainer.css";
 import PostHeader from "./PostHeader/PostHeader";
 import PostBody from "./PostBody/PostBody";
 import Post from "../../../../models/post";
+import PostImage from "./PostImage/PostImage";
 
 interface PostContainerProps {
   post: Post;
@@ -30,6 +31,7 @@ export default function PostContainer(props: PostContainerProps): JSX.Element {
       {!isLoading && (
         <>
           <PostHeader title={props.post.title} />
+          {props.post.previewMediaUri && <PostImage url={props.post.previewMediaUri} />}
           <PostBody />
         </>
       )}

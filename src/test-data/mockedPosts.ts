@@ -18,7 +18,7 @@ export const mockedPosts = {
         },
         {
           data: {
-            title: "Mock Post",
+            title: "Mock Post 2",
             author: "mockUser",
             subreddit_name_prefixed: "r/mock",
             selftext_html: "Mock content",
@@ -32,7 +32,7 @@ export const mockedPosts = {
         },
         {
           data: {
-            title: "Mock Post",
+            title: "Mock Post 3",
             author: "mockUser",
             subreddit_name_prefixed: "r/mock",
             selftext_html: "Mock content",
