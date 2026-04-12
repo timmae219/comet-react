@@ -4,6 +4,7 @@ import PostHeader from "./PostHeader/PostHeader";
 import PostBody from "./PostBody/PostBody";
 import Post from "../../../../models/post";
 import PostImage from "./PostImage/PostImage";
+import { marked } from "marked";
 
 interface PostContainerProps {
   post: Post;
@@ -11,14 +12,21 @@ interface PostContainerProps {
 
 export default function PostContainer(props: PostContainerProps): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
+  const [parsedContent, setParsedContent] = useState<string>("");
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const parseContent = async () => {
+      const html = await marked.parse(props.post.text || "");
+      setParsedContent(html);
       setIsLoading(false);
+    };
+
+    const timer = setTimeout(() => {
+      parseContent();
     }, 5000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [props.post.text]);
 
   return (
     <div
@@ -32,7 +40,7 @@ export default function PostContainer(props: PostContainerProps): JSX.Element {
         <>
           <PostHeader title={props.post.title} />
           {props.post.previewMediaUri && <PostImage url={props.post.previewMediaUri} />}
-          <PostBody content={props.post.text} />
+          <PostBody content={parsedContent} />
         </>
       )}
     </div>

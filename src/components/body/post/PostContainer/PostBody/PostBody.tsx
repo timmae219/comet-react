@@ -1,4 +1,4 @@
-import React, {JSX} from "react";
+import React, { JSX } from "react";
 
 interface PostBodyProps {
   content?: string;
@@ -6,6 +6,6 @@ interface PostBodyProps {
 
 export default function PostBody(props: PostBodyProps): JSX.Element {
   return (
-    <div className="Post-body" dangerouslySetInnerHTML={{__html: props.content ? props.content : ""}} />
+    <div className="Post-body" dangerouslySetInnerHTML={{ __html: props.content || "" }} data-testid="post-body" />
   );
 }

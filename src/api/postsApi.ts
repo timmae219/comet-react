@@ -4,7 +4,7 @@ import mockFetchBaseQuery from "../__mocks__/mockFetchBaseQuery";
 const baseQuery =
   process.env.NODE_ENV === "test"
     ? mockFetchBaseQuery
-    : fetchBaseQuery({ baseUrl: "https://api.reddit.com" });
+    : fetchBaseQuery({ baseUrl: "https://api.reddit.com?raw_json" });
 
 export const postsApi = createApi({
   reducerPath: "posts",

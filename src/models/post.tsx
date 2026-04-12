@@ -33,7 +33,7 @@ export default class Post {
       json.title ? json.title : "No title",
       json.author,
       json.subreddit_name_prefixed,
-      json.selftext_html,
+      json.selftext,
       json.preview ? json.preview.images[0].source.url : null,
       json.ups,
       [],
@@ -45,7 +45,7 @@ export interface PostJson {
   title?: string;
   author: string;
   subreddit_name_prefixed: string;
-  selftext_html: string;
+  selftext: string;
   preview?: { images: { source: { url: string } }[] };
   ups: number;
 }
