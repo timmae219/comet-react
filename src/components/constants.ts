@@ -1,0 +1,3 @@
+const POST_LOADING_TIME = 5000;
+
+export { POST_LOADING_TIME };

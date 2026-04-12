@@ -2,6 +2,7 @@ import React from "react";
 import { render, screen, act } from "@testing-library/react";
 import PostContainer from "../PostContainer";
 import "@testing-library/jest-dom";
+import { POST_LOADING_TIME } from "../../../../constants";
 
 describe("PostContainer Component Tests", () => {
   beforeEach(() => {
@@ -34,11 +35,23 @@ describe("PostContainer Component Tests", () => {
     render(<PostContainer post={dummyPost} />);
 
     await act(async () => {
-      jest.advanceTimersByTime(5000);
+      jest.advanceTimersByTime(POST_LOADING_TIME);
     });
 
     const containerElement = screen.getByRole("main", { hidden: true });
     expect(containerElement).toHaveTextContent("Test Post");
     expect(containerElement).toHaveClass("Post-container");
   });
+
+  it("displays empty content if post text is falsy", async () => {
+    const postWithFalsyText = { ...dummyPost, text: "" };
+    render(<PostContainer post={postWithFalsyText} />);
+
+    await act(async () => {
+      jest.advanceTimersByTime(POST_LOADING_TIME);
+    });
+
+    const containerElement = screen.getByTestId('post-body');
+    expect(containerElement.firstChild).toBeEmptyDOMElement();
+    expect(containerElement).toHaveClass("Post-body");});
 });

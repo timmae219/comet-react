@@ -5,6 +5,7 @@ import PostBody from "./PostBody/PostBody";
 import Post from "../../../../models/post";
 import PostImage from "./PostImage/PostImage";
 import { marked } from "marked";
+import { POST_LOADING_TIME } from "../../../constants";
 
 interface PostContainerProps {
   post: Post;
@@ -23,7 +24,7 @@ export default function PostContainer(props: PostContainerProps): JSX.Element {
 
     const timer = setTimeout(() => {
       parseContent();
-    }, 5000);
+    }, POST_LOADING_TIME);
 
     return () => clearTimeout(timer);
   }, [props.post.text]);
