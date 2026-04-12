@@ -30,10 +30,10 @@ describe("PostContainer Component Tests", () => {
     expect(containerElement).toHaveClass("Post-container-loading");
   });
 
-  it("displays content after loading time elapses", () => {
+  it("displays content after loading time elapses", async () => {
     render(<PostContainer post={dummyPost} />);
 
-    act(() => {
+    await act(async () => {
       jest.advanceTimersByTime(5000);
     });
 

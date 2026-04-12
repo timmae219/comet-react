@@ -40,12 +40,12 @@ describe("PostList Component", () => {
     expect(postContainers).toHaveLength(mockPosts.length);
   });
 
-  it("should pass the correct post data to each PostContainer", () => {
+  it("should pass the correct post data to each PostContainer", async () => {
     jest.useFakeTimers();
 
     render(<PostList posts={mockPosts} />);
 
-    act(() => {
+    await act(async () => {
       jest.advanceTimersByTime(5000);
     });
 

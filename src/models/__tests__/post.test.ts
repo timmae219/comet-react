@@ -6,7 +6,7 @@ describe("Post Model", () => {
     title: "Sample Post Title",
     author: "sampleUser",
     subreddit_name_prefixed: "r/sampleSubreddit",
-    selftext_html: "<p>Sample post content</p>",
+    selftext: "Sample post content",
     preview: {
       images: [{ source: { url: "https://example.com/sample.jpg" } }],
     },
@@ -43,7 +43,7 @@ describe("Post Model", () => {
       expect(post.title).toBe("Sample Post Title");
       expect(post.authorUserName).toBe("sampleUser");
       expect(post.subreddit).toBe("r/sampleSubreddit");
-      expect(post.text).toBe("<p>Sample post content</p>");
+      expect(post.text).toBe("Sample post content");
       expect(post.previewMediaUri).toBe("https://example.com/sample.jpg");
       expect(post.votingScore).toBe(42);
       expect(post.comments).toEqual([]);
@@ -54,7 +54,7 @@ describe("Post Model", () => {
         title: "Title without Image",
         author: "userWithoutImage",
         subreddit_name_prefixed: "r/noImageSubreddit",
-        selftext_html: "<p>No image content</p>",
+        selftext: "No image content",
         ups: 15,
       };
 
@@ -63,7 +63,7 @@ describe("Post Model", () => {
       expect(post.title).toBe("Title without Image");
       expect(post.authorUserName).toBe("userWithoutImage");
       expect(post.subreddit).toBe("r/noImageSubreddit");
-      expect(post.text).toBe("<p>No image content</p>");
+      expect(post.text).toBe("No image content");
       expect(post.previewMediaUri).toBeNull();
       expect(post.votingScore).toBe(15);
       expect(post.comments).toEqual([]);
